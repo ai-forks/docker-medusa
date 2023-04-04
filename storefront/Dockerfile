@@ -1,4 +1,4 @@
-FROM node:latest
+FROM mixnet/node:v18
 
 WORKDIR /app/storefront
 
@@ -6,7 +6,7 @@ COPY . .
 
 RUN rm -rf node_modules
 
-RUN apt-get update
+#RUN apt-get update
 
 RUN npm install -g npm@latest
 

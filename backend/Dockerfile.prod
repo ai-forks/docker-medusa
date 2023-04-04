@@ -1,4 +1,4 @@
-FROM node:17.1.0 as builder
+FROM mixnet/node:v18 as builder
 
 WORKDIR /app/medusa
 
@@ -6,9 +6,9 @@ COPY . .
 
 RUN rm -rf node_modules
 
-RUN apt-get update
+#RUN apt-get update
 
-RUN apt-get install -y python
+#RUN apt-get install -y python
 
 RUN npm install -g npm@latest
 
@@ -17,7 +17,7 @@ RUN npm install --loglevel=error
 RUN npm run build
 
 
-FROM node:17.1.0
+FROM mixnet/node:v18
 
 WORKDIR /app/medusa
 
@@ -31,9 +31,9 @@ COPY .env .
 
 COPY medusa-config.js .
 
-RUN apt-get update
+#RUN apt-get update
 
-RUN apt-get install -y python
+#RUN apt-get install -y python
 # RUN apk add --no-cache python3
 
 RUN npm install -g @medusajs/medusa-cli

@@ -1,4 +1,4 @@
-FROM node:17.1.0 as builder
+FROM mixnet/node:v18 as builder
 
 WORKDIR /app/admin
 
@@ -8,8 +8,8 @@ COPY . .
 
 RUN rm -rf node_modules
 
-RUN apt-get update
-
+#RUN apt-get update
+RUN npm i -g yarn
 RUN yarn add sharp
 
 RUN yarn global add gatsby-cli

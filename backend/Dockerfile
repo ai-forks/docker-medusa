@@ -1,12 +1,12 @@
-FROM node:17.1.0
+FROM mixnet/node:v18
 
 WORKDIR /app/medusa
 
 COPY package.json .
 
-RUN apt-get update
+#RUN apt-get update
 
-RUN apt-get install -y python
+#RUN apt-get install -y python
 
 RUN npm install -g npm@latest
 
