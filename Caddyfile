@@ -1,0 +1,25 @@
+:80 {
+   handle /admin* {
+      reverse_proxy {
+         to 127.0.0.1:80
+         lb_policy least_conn 
+      }
+   }
+   handle /app* {
+      reverse_proxy {
+         to 127.0.0.1:81
+         lb_policy least_conn 
+      }
+   }
+   handle /admin {
+      reverse_proxy {
+         to 127.0.0.1:81
+         lb_policy least_conn 
+      }
+   }
+}
+
+localhost {
+   root ./www
+   file_server
+}
